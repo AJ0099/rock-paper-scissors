@@ -71,18 +71,20 @@ const playRound = (playerChoice, computerChoice) => {
       break;
   }
   if (Number(playerPoint.textContent) === 5) {
-    return stopRound(playerPoint);
+    computerPoint.textContent = 0;
+    return stopRound(playerPoint, computerPoint);
   } else if (Number(computerPoint.textContent) === 5) {
-    return stopRound(computerPoint);
+    playerPoint.textContent = 0;
+    return stopRound(playerPoint, computerPoint);
   }
 };
 
-const stopRound = (playerPoint) => {
+const stopRound = (playerPoint, computerPoint) => {
   if (playerPoint.textContent == 5) {
     finalResults.textContent = "You Win!";
     modal.style.display = "flex";
     opacity.classList.add("opacity");
-  } else {
+  } else if (computerPoint.textContent == 5) {
     finalResults.textContent = "You Lost!";
     modal.style.display = "flex";
     opacity.classList.add("opacity");
